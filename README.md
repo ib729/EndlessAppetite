@@ -1,3 +1,3 @@
-# Introduction to Psychology Project on Binge Eating
+# Endless Appetite
 
 WORK IN PROGRESS
