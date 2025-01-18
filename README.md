@@ -1,9 +1,6 @@
-# Endless Appetite
+# Endless Appetite ![Version](https://img.shields.io/badge/Version-1.0-blue) [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 A text-based horror game that explores the psychological aspects of binge eating disorder through an interactive narrative. The game follows Bob, a teenager who discovers a mysterious restaurant called "The Nickado" that seems to cater to his emotional needs.
-
-![Version](https://img.shields.io/badge/Version-1.0-blue)
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Disclaimer!
 This project was created as part of a school assignment for Introduction to Psychology. 
