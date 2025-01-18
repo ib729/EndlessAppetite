@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A terminal-style game about binge eating.">
+    <title>Endless Appetite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.5;
+        
+        // Resume from last position if exists
+        const lastTime = localStorage.getItem('musicTime');
+        if (lastTime) {
+            bgMusic.currentTime = parseFloat(lastTime);
+        }
+        bgMusic.play();
+        
+        // Save current position before leaving page
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Backspace') {
+                event.preventDefault();
+                localStorage.setItem('musicTime', bgMusic.currentTime);
+                window.location.href = 'controls.html';
+            }
+        });
+    </script>
+    <div class="game-text">
+        <p>You wake up in the middle of the night...</p>
+        <p>Your stomach is growling...</p>
+        <p>What do you do?</p>
+        <br>
+        <p>1. Go back to sleep</p>
+        <p>2. Get up and eat something small</p>
+        <p>3. Raid the fridge</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
+    </footer>
+</body>
+</html>
