@@ -6,31 +6,518 @@
     <meta name="description" content="A terminal-style game about binge eating.">
     <title>Endless Appetite</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <div class="game-text">
-        <p>You wake up in the middle of the night...</p>
-        <p>Your stomach is growling...</p>
+        <br>
+        <p>You are Bob, a 15-year-old student who just had another rough day at school. Your arm is bruised from being shoved into lockers, and your eyes are still wet from holding back tears. The bullies' words echo in your head: "Hey fatty, did you eat the entire cafeteria again?"</p>
+        <br>
+        <p>As you walk down the familiar street, the warm, inviting glow of 'The Nickado' appears ahead. The neon sign flickers with a strange green light, and the scent of perfectly cooked food wafts through the air.</p>
+        <br>
         <p>What do you do?</p>
         <br>
-        <p>1. Go back to sleep</p>
-        <p>2. Get up and eat something small</p>
-        <p>3. Raid the fridge</p>
+        <p>1. Walk straight to The Nickado</p>
+        <p>2. Stop and count how many times you've been there</p>
+        <p>3. Try to go home instead</p>
     </div>
 
     <footer>
-        <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
+        <p style="text-align: center;">&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
 
     <script src="music.js"></script>
     <script>
         musicPlayer.play();
+        let currentScene = 1;
         
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Backspace') {
                 event.preventDefault();
                 window.location.href = 'controls.html';
             }
+            
+            if (event.key === '1' || event.key === '2' || event.key === '3') {
+                const gameText = document.querySelector('.game-text');
+                
+                // Add fade out effect before changing content
+                gameText.style.transition = 'opacity 0.5s';
+                gameText.style.opacity = 0;
+                
+                // Wait for fade out to complete before changing content
+                setTimeout(() => {
+                    gameText.innerHTML = '<br>';
+                    
+                    if (currentScene === 1) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>The bell chimes as you push open the door. Niko's friendly face appears from behind the counter, his green apron covered in avocado stains. "Bob! I was expecting you. Rough day? I just made fresh avocado fries and that shake you love!"</p>
+                                    <br>
+                                    <p>Inside The Nickado, you notice again how the restaurant is completely empty despite the incredible amount of food prepared. Mountains of avocado burgers, towers of guacamole fries, and endless rows of creamy shakes line the counter. You can't help but feel a sense of dread.</p>
+                                    <br>
+                                    <p>What will you do next?</p>
+                                    <br>
+                                    <p>1. Ask why the restaurant is always empty</p>
+                                    <p>2. Start eating to forget your problems</p>
+                                    <p>3. Wonder aloud about how the food is always ready</p>
+                                `;
+                                currentScene = 2;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>You pull out your phone and check your notes. 68 visits. Something about that number makes your stomach churn. Wasn't there something strange about the number 69? You can't quite remember who mentioned it... As you stand there, the neon sign's green glow seems to pulse, like a heartbeat.</p>
+                                    <br>
+                                    <p>What will you do next?</p>
+                                    <br>
+                                    <p>1. Run away from The Nickado while you still can</p>
+                                    <p>2. Try to remember who warned you about the number 69</p>
+                                    <p>3. Enter anyway - surely one more visit won't hurt</p>
+                                `;
+                                currentScene = 2.5;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>Your feet feel heavy as you turn toward home. But with each step, the smell of The Nickado grows stronger, more irresistible. You find yourself turning back, drawn by an unseen force. The green neon sign seems to be calling your name, pulsing like a heartbeat.</p>
+                                    <br>
+                                    <p>As you stand frozen between leaving and staying, you hear Niko's voice carried on the wind: "Bob... where are you going? Don't you want to feel better?"</p>
+                                    <br>
+                                    <p>What will you do next?</p>
+                                    <br>
+                                    <p>1. Fight against the pull and run home</p>
+                                    <p>2. Give in and enter The Nickado</p>
+                                    <p>3. Stand your ground and try to understand what's happening</p>
+                                `;
+                                currentScene = 2.2;
+                                break;
+                        }
+                    } else if (currentScene === 2.2) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>You turn and sprint away, your heart pounding. Behind you, the voice grows angry, distorted. The smell of food becomes sickly sweet, almost rotting. As you run, a silver figure steps into your path.</p>
+                                    <br>
+                                    <p>"You're stronger than you know," the woman in silver says. "This is your 68th visit avoided. One more temptation, and Gastrovorax would have claimed you."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her and run back to The Nickado</p>
+                                    <p>3. Ask her how to break free from this curse</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>The pull is too strong. As you walk through the door, Niko's smile seems wider than humanly possible. "Welcome back, Bob. Just one more visit after this, and all your pain will go away forever..."</p>
+                                    <br>
+                                    <p>A woman in silver suddenly appears between you and the counter. "Stop! This is your 68th visit. Look at what this place really is!"</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>You focus your thoughts, fighting against the hypnotic pull. The green neon sign flickers, and for a moment you see the truth - a decrepit building, surrounded by an otherworldly green mist. A woman in silver approaches.</p>
+                                    <br>
+                                    <p>"You're beginning to see," she says. "This is your 68th encounter. One more would bind you to Gastrovorax forever."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Ignore her and enter The Nickado</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                        }
+                    } else if (currentScene === 2) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>Niko's smile falters for just a moment, revealing rows of sharp teeth before his face returns to normal. "Special customers, Bob. Only special people can see The Nickado. People who... need us the most." His eyes gleam with an unnatural green light, and you notice how his shadow seems to writhe and twist on the wall.</p>
+                                    <br>
+                                    <p>In the corner of your eye, you catch a glimpse of someone in silver, watching.</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Look closer at Niko's shadow</p>
+                                    <p>2. Turn to find the silver figure</p>
+                                    <p>3. Start eating to ignore everything strange</p>
+                                `;
+                                currentScene = 2.1;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>The food tastes amazing as always. Each bite makes the pain fade away. You barely notice how quickly you're eating, how the portions seem endless, how time seems to stop inside The Nickado.</p>
+                                    <br>
+                                    <p>A woman in a silver dress suddenly appears before you. Her eyes are kind but urgent. "Stop, Bob. This is your 68th visit. You've consumed 419 pounds of food here. One more visit will seal your fate."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>"How is everything always fresh? Always ready?" you ask. Niko chuckles, but there's something off about the sound. The food seems to glow with a faint green aura when you look closely.</p>
+                                    <br>
+                                    <p>A woman in a silver dress suddenly appears before you. Her eyes are kind but urgent. "Stop, Bob. This is your 68th visit. You've consumed 419 pounds of food here. One more visit will seal your fate."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                        }
+                    } else if (currentScene === 2.1) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>As you stare at the shadow, it grows larger, sprouting horns and multiple limbs. Niko's voice changes, becoming deeper, more echoing: "Curious, aren't you? Look closer..." The shadow reaches for you with clawed hands.</p>
+                                    <br>
+                                    <p>Suddenly, a woman in a silver dress steps between you and Niko. "Stop, Bob. This is your 68th visit. You've consumed 419 pounds of food here. One more visit will seal your fate. Look at what Gastrovorax truly is!"</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>You turn to find a woman in a silver dress standing near the door. Her expression is both kind and worried. "I've been watching you, Bob. This is your 68th visit. You've consumed 419 pounds of food here. Can't you feel how this place is changing you?"</p>
+                                    <br>
+                                    <p>Behind you, Niko's voice grows distorted: "Don't listen to her... She wants to take away your comfort..."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>You grab a handful of fries, trying to focus only on the food. But as you eat, the woman in silver appears directly in front of you. "Stop, Bob! Look at what you're really eating!" You glance down - the food is glowing with an sickly green light, and it seems to be moving...</p>
+                                    <br>
+                                    <p>Behind you, Niko laughs - a sound like breaking glass. "Just one more visit, Bob. Number 69. Then you'll never have to feel pain again..."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                        }
+                    } else if (currentScene === 2.5) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>As you turn to run, you hear Niko's voice behind you, unnaturally loud despite you being outside: "Bob? Where are you going? I made your favorite avocado shake..." Your legs feel heavy, like they're being pulled back by invisible strings, but you force yourself to keep moving. With each step away, you hear what sounds like angry whispers in a language you don't understand. When you finally look back, the restaurant seems to flicker, revealing a dark, decaying building for just a moment.</p>
+                                    <br>
+                                    <p>A silver figure appears in your path.</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her and run back to The Nickado</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>You close your eyes, forcing yourself to remember. A memory surfaces: a woman in silver dress stopped you last week. "Count your visits," she had warned. "The demon Gastrovorax claims souls on their 69th meal." Your eyes snap open as you see the same silver figure approaching.</p>
+                                    <br>
+                                    <p>Her eyes are kind but urgent. "You remember now, Bob. This is your 68th visit. You've consumed 419 pounds of food here. One more visit will seal your fate."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>The bell chimes as you push open the door. Something's different today - the usual warm lighting has a sickly green tinge, and Niko's smile seems to split his face too wide. "Bob! Visit number 68, isn't it? I prepared something special today..." You notice his shadow on the wall doesn't match his shape - it's much larger, with what looks like horns.</p>
+                                    <br>
+                                    <p>A woman in a silver dress suddenly appears before you. Her eyes are kind but urgent. "Stop, Bob. This is your 68th visit. You've consumed 419 pounds of food here. One more visit will seal your fate."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Listen to the woman's warning</p>
+                                    <p>2. Push past her to get to the food</p>
+                                    <p>3. Ask her how to break free</p>
+                                `;
+                                currentScene = 3;
+                                break;
+                        }
+                    } else if (currentScene === 3) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>She explains that The Nickado is a trap set by Gastrovorax, a demon that feeds on human suffering. "It finds people who use food to cope with pain. Those who feel alone, bullied, or lost. Binge eating isn't your fault, Bob. But there are healthier ways to deal with your emotions."</p>
+                                    <br>
+                                    <p>Her words make you think about all the times you've come here to escape your pain. Each visit made you feel better temporarily, but the relief never lasted.</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Seek professional help</p>
+                                    <p>2. Enter The Nickado one last time</p>
+                                    <p>3. Call your parents for support</p>
+                                `;
+                                currentScene = 4;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>As you move past her, you catch Niko's reflection in a mirror. Instead of the kind restaurant owner, you see a towering shadow creature with glowing green eyes. Gastrovorax's true form towers to the ceiling, horns scraping the walls, numerous mouths grinning with sharp teeth. The food demon who traps souls through their pain.</p>
+                                    <br>
+                                    <p>"Bob..." its voice sounds like a thousand whispers at once. "Just one more meal. One last visit. Then all your pain will end forever..."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Seek professional help</p>
+                                    <p>2. Enter The Nickado one last time</p>
+                                    <p>3. Call your parents for support</p>
+                                `;
+                                currentScene = 4;
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>"Many have broken free," she says softly. "The first step is recognizing that binge eating is a response to emotional pain. The food isn't filling the void – it's trapping you in a cycle. But help is available."</p>
+                                    <br>
+                                    <p>She shows you her phone, displaying pictures of other teenagers who once visited The Nickado. Some you recognize from school - they seem happier now, surrounded by friends and family. "They found their way out. You can too."</p>
+                                    <br>
+                                    <p>What will you do?</p>
+                                    <br>
+                                    <p>1. Seek professional help</p>
+                                    <p>2. Enter The Nickado one last time</p>
+                                    <p>3. Call your parents for support</p>
+                                `;
+                                currentScene = 4;
+                                break;
+                        }
+                    } else if (currentScene === 4) {
+                        switch(event.key) {
+                            case '1':
+                                gameText.innerHTML += `
+                                    <p>The woman helps you find an eating disorder specialist. Through therapy, you learn about binge eating disorder and healthy coping mechanisms. You start understanding your triggers and developing better ways to handle stress and emotions.</p>
+                                    <br>
+                                    <p>The Nickado's sign grows dimmer each time you pass by. You notice other students who seem drawn to it, and sometimes you share your story with them. Each time you help someone else, the green glow fades a little more.</p>
+                                    <br>
+                                    <p>Finally, one day, you walk past and see only an empty lot where The Nickado once stood. You smile, knowing Gastrovorax's power over you is broken.</p>
+                                    <br>
+                                    <p>THE END - Recovery Path</p>
+                                    <br>
+                                    <p style="text-align: center;" class="continue">Press Space to continue...</p>
+                                `;
+                                currentScene = 5.1;
+                                break;
+                            case '2':
+                                gameText.innerHTML += `
+                                    <p>The moment you step inside The Nickado for the 69th time, everything changes. The walls melt away, revealing an endless void filled with green fire. Niko - no, Gastrovorax - towers over you, its true form finally revealed.</p>
+                                    <br>
+                                    <p>You become the 69th soul trapped by the demon, forced to serve in The Nickado for eternity. Now you stand behind the counter, wearing a green apron, watching as other lost souls wander in seeking comfort in food.</p>
+                                    <br>
+                                    <p style="color: red;">Your story ends here, but The Nickado's story continues, forever seeking its next victim...</p>
+                                    <br>
+                                    <p>THE END - Dark Path</p>
+                                    <br>
+                                    <p style="text-align: center;" class="continue">Press Space to continue...</p>
+                                `;
+                                currentScene = 5.3;  // New scene number for dark ending space key handling
+                                break;
+                            case '3':
+                                gameText.innerHTML += `
+                                    <p>Your parents answer immediately. Through tears, you tell them everything - about the bullying, the binge eating, The Nickado. They listen without judgment, holding you as you speak. For the first time, you realize you're not alone in this fight.</p>
+                                    <br>
+                                    <p>Together, you find a support group and a counselor who specializes in eating disorders. The woman in silver appears one last time, smiling proudly as you walk past The Nickado without feeling its pull.</p>
+                                    <br>
+                                    <p>Each day gets a little easier. The bullies seem less important now that you have a support system. You even start a support group at school for others struggling with similar issues.</p>
+                                    <br>
+                                    <p>THE END - Family Support Path</p>
+                                    <br>
+                                    <p style="color: hsl(0, 0%, 100%);">Your family can be your strongest allies in recovery. Don't be afraid to open up to them.</p>
+                                    <br>
+                                    <br>
+                                    <p style="text-align: center;" class="return">Press Backspace to return to menu</p>
+                                `;
+                                currentScene = 5.4;
+                                break;
+                        }
+                    }
+                    
+                    // Add fade in effect after content change
+                    setTimeout(() => {
+                        gameText.style.transition = 'opacity 0.5s';
+                        gameText.style.opacity = 1;
+                    }, 50);
+                }, 500); // Match this with the fade out duration
+            }
+            
+            if (event.key === ' ' && currentScene === 5.1) {  // First space key press
+                const gameText = document.querySelector('.game-text');
+                
+                // Add fade out effect
+                gameText.style.transition = 'opacity 0.5s';
+                gameText.style.opacity = 0;
+                
+                // Wait for fade out, then show the first message
+                setTimeout(() => {
+                    gameText.innerHTML = `
+                        <br>
+                        <br>
+                        <br>
+                        <p style="color: hsl(0, 0%, 100%); text-align: center; font-size: 24px;">If you or someone you know struggles with binge eating, help is available. You're not alone.</p>
+                        <br>
+                        <br>
+                        <p style="text-align: center;" class="continue">Press Space to continue...</p>
+                    `;
+                    
+                    // Fade in the new message
+                    setTimeout(() => {
+                        gameText.style.transition = 'opacity 0.5s';
+                        gameText.style.opacity = 1;
+                    }, 50);
+                }, 500);
+                
+                currentScene = 5.2;  // Set to new scene for second space press
+            } else if (event.key === ' ' && currentScene === 5.2) {  // Second space key press
+                const gameText = document.querySelector('.game-text');
+                
+                // Add fade out effect
+                gameText.style.transition = 'opacity 0.5s';
+                gameText.style.opacity = 0;
+                
+                // Wait for fade out, then show the quote
+                setTimeout(() => {
+                    gameText.innerHTML = `
+                        <br>
+                        <br>
+                        <br>
+                        <div style="
+                            color: hsl(0, 0%, 100%);
+                            text-align: center;
+                            padding: 40px;
+                            border: 2px solid hsla(108, 100%, 50%, 0.3);
+                            border-radius: 10px;
+                            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+                            box-shadow: 0 0 20px hsla(108, 100%, 50%, 0.1);
+                            max-width: 800px;
+                            margin: 0 auto;
+                        ">
+                            <p style="
+                                font-size: 24px;
+                                font-style: italic;
+                                line-height: 1.5;
+                                text-shadow: 0 0 10px hsla(108, 100%, 50%, 0.3);
+                                margin-bottom: 20px;
+                            ">"The first step towards getting somewhere is to decide that you are not going to stay where you are."</p>
+                            <p style="
+                                font-size: 20px;
+                                color: hsla(108, 100%, 50%, 0.9);
+                                text-shadow: 0 0 8px hsla(108, 100%, 50%, 0.2);
+                            ">- J.P. Morgan</p>
+                        </div>
+                        <br>
+                        <br>
+                        <p style="text-align: center;" class="return">Press Backspace to return to menu</p>
+                    `;
+                    
+                    // Fade in the new message
+                    setTimeout(() => {
+                        gameText.style.transition = 'opacity 0.5s';
+                        gameText.style.opacity = 1;
+                    }, 50);
+                }, 500);
+                
+                currentScene = 5;  // Return to regular end scene
+            } else if (event.key === ' ' && currentScene === 5.3) {
+                const gameText = document.querySelector('.game-text');
+                gameText.style.opacity = 0;
+                
+                setTimeout(async () => {
+                    try {
+                        await musicPlayer.playDarkMusic();
+                        
+                        gameText.innerHTML = `
+                            <br>
+                            <br>
+                            <br>
+                            <video id="gastrovoraxVideo" autoplay loop style="
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                min-width: 100%;
+                                min-height: 100%;
+                                width: auto;
+                                height: auto;
+                                z-index: -1;
+                                opacity: 0.5;
+                            ">
+                                <source src="Gastrovorax.webm" type="video/webm">
+                            </video>
+                            <p style="
+                                color: hsl(0, 0%, 100%);
+                                text-align: center;
+                                font-size: 24px;
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                                position: relative;
+                                z-index: 1;
+                            ">But remember it's never too late to seek help. Don't let your struggles consume you.</p>
+                            <br>
+                            <br>
+                            <p style="text-align: center;" class="return">Press Backspace to return to menu</p>
+                        `;
+                        
+                        // Add event listener for backspace
+                        const handleBackspace = async (e) => {
+                            if (e.key === 'Backspace') {
+                                await musicPlayer.stopDarkMusic();
+                                document.removeEventListener('keydown', handleBackspace);
+                                window.location.href = 'controls.html';
+                            }
+                        };
+                        document.addEventListener('keydown', handleBackspace);
+                        
+                        gameText.style.opacity = 1;
+                    } catch (error) {
+                        console.error("Failed to switch music:", error);
+                    }
+                }, 500);
+                
+                currentScene = 5;
+            }
+        });
+
+        // Add initial fade in when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameText = document.querySelector('.game-text');
+            gameText.style.opacity = 0;
+            setTimeout(() => {
+                gameText.style.transition = 'opacity 1s';
+                gameText.style.opacity = 1;
+            }, 100);
         });
     </script>
 </body>
