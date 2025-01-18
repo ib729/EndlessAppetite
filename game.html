@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
+    </audio>
     <div class="game-text">
         <p>You wake up in the middle of the night...</p>
         <p>Your stomach is growling...</p>
@@ -22,8 +25,11 @@
         <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
 
-    <script src="audio.js"></script>
     <script>
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.5;
+        bgMusic.play();
+        
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Backspace') {
                 event.preventDefault();

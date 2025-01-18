@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
+    </audio>
     <div class="welcome">Welcome!</div>
     <div class="welcome-message">This is a simple story driven game about binge eating. You just gotta click 1, 2, or 3 to select your dialogue of choice, and the story will act out based on your decision. Also, when you are prompted to interact you just have to click space. Have fun! <br>
         <p>|-----------------------|</p>
@@ -21,8 +24,11 @@
         <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
 
-    <script src="audio.js"></script>
     <script>
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.5;
+        bgMusic.play();
+        
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 window.location.href = 'game.html';

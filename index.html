@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
+    </audio>
     <img src="logo.webp" alt="Endless Appetite Logo" class="background-logo">
     <div class="start-text">Press Enter to start</div>
     <footer>
         <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
 
-    <script src="audio.js"></script>
     <script>
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.volume = 0.5;
+        bgMusic.play();
+        
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 window.location.href = 'controls.html';
