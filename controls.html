@@ -8,37 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio id="bgMusic" autoplay loop>
-        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-        const bgMusic = document.getElementById('bgMusic');
-        bgMusic.volume = 0.5;
-        
-        // Resume from last position if exists
-        const lastTime = localStorage.getItem('musicTime');
-        if (lastTime) {
-            bgMusic.currentTime = parseFloat(lastTime);
-        }
-        bgMusic.play();
-        
-        // Save current position before leaving page
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('musicTime', bgMusic.currentTime);
-        });
-        
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                localStorage.setItem('musicTime', bgMusic.currentTime);
-                window.location.href = 'game.html';
-            }
-            if (event.key === 'Backspace') {
-                event.preventDefault();
-                localStorage.setItem('musicTime', bgMusic.currentTime);
-                window.location.href = 'index.html';
-            }
-        });
-    </script>
     <div class="welcome">Welcome!</div>
     <div class="welcome-message">This is a simple story driven game about binge eating. You just gotta click 1, 2, or 3 to select your dialogue of choice, and the story will act out based on your decision. Also, when you are prompted to interact you just have to click space. Have fun! <br>
         <p>|-----------------------|</p>
@@ -51,5 +20,18 @@
     <footer>
         <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
+
+    <script src="audio.js"></script>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                window.location.href = 'game.html';
+            }
+            if (event.key === 'Backspace') {
+                event.preventDefault();
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
 </body>
 </html>
