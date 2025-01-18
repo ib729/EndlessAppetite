@@ -18,7 +18,7 @@ This project was created as part of a school assignment for Introduction to Psyc
 
 ## How to Play
 
-1. Go to ea.ivanbelousov.com or clone repo and play locally.
+1. Go to [ea.ivanbelousov.com](https://ea.ivanbelousov.com) or clone repo and play locally.
 2. Use number keys (1, 2, 3) to make choices.
 3. Press Spacebar to continue.
 4. Press Backspace to return to menu.
@@ -33,8 +33,8 @@ cd endless-appetite
 
 # Open index.html in your browser
 # Or you can use any local server, for example:
-python -m http.server 8000 ```
-
+python -m http.server 8000
+```
 ## License
 This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
 
