@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio id="bgMusic" autoplay loop>
-        <source src="Underclocked - Eric Skiff.mp3" type="audio/mpeg">
-    </audio>
     <div class="game-text">
         <p>You wake up in the middle of the night...</p>
         <p>Your stomach is growling...</p>
@@ -25,26 +22,13 @@
         <p>&copy; 2025 Ivan Belousov. All rights reserved.</p>
     </footer>
 
+    <script src="music.js"></script>
     <script>
-        const bgMusic = document.getElementById('bgMusic');
-        bgMusic.volume = 0.5;
-
-        // Resume from last position if exists
-        const lastTime = sessionStorage.getItem('musicTime');
-        if (lastTime) {
-            bgMusic.currentTime = parseFloat(lastTime);
-        }
-        bgMusic.play();
-
-        // Update time in storage periodically
-        setInterval(() => {
-            sessionStorage.setItem('musicTime', bgMusic.currentTime);
-        }, 1000);
+        musicPlayer.play();
         
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Backspace') {
                 event.preventDefault();
-                sessionStorage.setItem('musicTime', bgMusic.currentTime);
                 window.location.href = 'controls.html';
             }
         });
